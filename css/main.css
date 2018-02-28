@@ -1,0 +1,134 @@
+body {
+	color: #8c8c8c;
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+	font-size: 18px;
+	font-weight: 300;
+	overflow-x: hidden;
+}
+
+a { transition: all 0.3s ease; }
+a:hover, a:focus {
+	text-decoration: none;
+	outline: none;
+}
+
+h2 { font-size: 2.2rem; }
+h3 { 
+	font-size: 1.65rem; }
+h4 { 
+	font-size: 1.4rem;
+	line-height: 1.6;
+}
+
+p { line-height: 1.9; }
+
+.container {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 1390px;
+	overflow-x: hidden;
+}
+
+.quote-container {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 800px;
+	overflow-x: visible;
+}
+
+.header { padding-top: 50px; }
+
+.header-inner {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	height: 100px;
+}
+	
+.site-name {
+	color: #650071;
+	display: block;
+	font-size: 2.6rem;
+	font-weight: 400;
+}
+
+.main-nav { font-size: 1.2rem; }
+
+#hr-below-quote { border-top: 1px solid #CCCCCC; }
+
+.hr { 
+	margin-top: 50px;
+	border-top: 1px solid #CCCCCC; 
+}
+
+.navbar-nav .nav-link {
+	border-radius: 6px;
+	color: black;
+	padding: 10px 40px;
+}
+
+.nav-item.active .nav-link, .nav-link:hover, .nav-link:focus {
+	color: white;
+	background-color: #7a0088;
+}
+
+.purple-text { color: #650071; }
+
+.quote { font-size: 1rem; }
+
+#quotation-open-img {
+	height: 32px;
+	position: relative;
+	right: 75px;
+}
+
+#quotation-close-img {
+	height: 32px;
+	position: relative;
+	left: 785px;
+	bottom: 40px;
+}
+
+.home-header-img-container {
+	background-image: url("../images/header-img.png");
+	background-size: cover;
+	background-position: 0 -320px;
+	background-repeat: no-repeat;
+	height: 510px;
+	margin-bottom: 50px;
+}
+
+.header-img-container {
+	background-image: url("../images/header-img.png");
+	background-size: cover;
+	background-position: 0 -500px;
+	background-repeat: no-repeat;
+	height: 200px;
+}
+
+.section { padding-bottom: 50px; }
+
+.title {
+	margin-top: 1rem;
+	padding-top: 2rem;
+	margin-bottom: 1rem;
+	line-height: 1.4;
+}
+
+.subtitle {
+	font-size: 1.4rem;
+	max-width: 800px;
+	margin: 0 auto 80px;
+}
+
+.content-box {
+	max-width: 310px;
+	margin: 0 auto;
+}
+
