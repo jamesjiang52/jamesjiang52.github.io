@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Touching the Sky</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">  
+</head>
+<body>
+	<section class="header">
+		<div class="container">
+			<div class="header-inner">
+				<h1 class="site-name">Touching the Sky</h1>
+				<nav class="navbar main-nav">
+					<ul class="nav navbar-nav">
+						<li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+						<li class="nav-item"><a href="research.html" class="nav-link">Research</a></li>
+						<li class="nav-item"><a href="photography.html" class="nav-link">Photography</a></li>
+						<li class="nav-item active"><a href="projects.html" class="nav-link">Projects</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<img src="images/header-img.png" id="header-img">
+	</section>
+	<section class="section">
+		<div class="container">
+			<h2 class="purple-text title">Projects</h2>
+				<p>This page will likely be the most frequented part of this website. Here, I'll post and talk a bit about some of the coding projects I've done. As always, all the code I refer to can be found on 
+				<a href="https://github.com/jamesjiang52" target="_blank">my GitHub</a>.</p>
+			<div class="hr"></div>
+			<h3 class="purple-text title">Unbound</h3>
+				<p>Code available <a href="https://github.com/jamesjiang52/Unbound" target="_blank">here</a>.</p>
+<pre class="code"><code><span class="syntax-blue">public</span> <span class="syntax-purple">void</span> LoseHealth (<span class="syntax-purple">float</span> amount) {
+	damaged = <span class="syntax-blue">true</span>;
+	<span class="syntax-blue">if</span> (playerAttack.isBlocking)
+		amount *= (<span class="syntax-orange">1f</span>/playerAttack.blockReduceDamage);
+	<span class="syntax-blue">if</span> (currentHealth - amount > <span class="syntax-orange">0f</span>)
+		currentHealth -= amount;
+	<span class="syntax-blue">else</span> {
+		currentHealth = <span class="syntax-orange">0f</span>;
+		Death ();
+	}
+	healthBar.<span class="syntax-blue">value</span> = currentHealth;
+	healthRegenTimer = <span class="syntax-orange">0f</span>;
+	playerMovement.adjustedSprintSpeed = playerMovement.movementSpeed;
+}</code></pre>
+			<div class="hr"></div>
+			<h3 class="purple-text title">Project Euler</h3>
+				<p>Code available <a href="https://github.com/jamesjiang52/Project-Euler" target="_blank">here</a>.</p>
+<pre><div class="code"><span class="syntax-blue">import</span> math
+
+<span class="syntax-blue">def</span> len_fraction_expansion_sqrt_period(x):
+	<span class="syntax-green">"""
+	Returns the period length of the continued fraction expansion of sqrt(x)
+	"""</span>
+	a_0 = math.floor(math.sqrt(x))
+	b = a_0
+	c = x - a_0**<span class="syntax-red">2</span>
+	len_ = <span class="syntax-red">1</span>
+	seen = [[b, c]]
+	<span class="syntax-blue">while</span> <span class="syntax-purple">True</span>:
+		a = math.floor((a_0 + b)/c)
+		b = <span class="syntax-purple">int</span>(a*c - b)
+		c = <span class="syntax-purple">int</span>((x - b**<span class="syntax-red">2</span>)/c)
+		<span class="syntax-blue">if</span> [b, c] <span class="syntax-blue">in</span> seen:
+			<span class="syntax-blue">return</span>(len_)
+		seen.append([b, c])
+		len_ += <span class="syntax-red">1</span>
+</div></pre>
+			<div class="hr"></div>
+			<h3 class="purple-text title">Chord For Me</h3>
+				<p>Code available <a href="https://github.com/eddddddy/ChordForMe" target="_blank">here</a>.</p>
+<pre class="code"><code>sample_rate, samples = wavfile.read(<span class="syntax-green">"chordrecordings\\"</span> + directory + file)
+frequencies, times, spectrogram = signal.spectrogram(samples, sample_rate, nperseg=<span class="syntax-red">2048</span>)
+plt.pcolormesh(times, frequencies, spectrogram)
+<span class="syntax-blue">for</span> i <span class="syntax-blue">in</span> <span class="syntax-purple">range</span>(<span class="syntax-red">16</span>):
+	plt.axis([<span class="syntax-red">0</span>.<span class="syntax-red">064</span>/<span class="syntax-red">3</span> + i*<span class="syntax-red">0</span>.<span class="syntax-red">112</span>/<span class="syntax-red">3</span>, <span class="syntax-red">0</span>.<span class="syntax-red">064</span>/<span class="syntax-red">3</span> + (i + <span class="syntax-red">1</span>)*<span class="syntax-red">0</span>.<span class="syntax-red">112</span>/<span class="syntax-red">3</span>, <span class="syntax-red">0</span>, <span class="syntax-red">5000</span>])
+	plt.axis(<span class="syntax-green">"off"</span>)
+	ax = plt.gca()
+	ax.get_xaxis().set_visible(<span class="syntax-purple">False</span>)
+	ax.get_yaxis().set_visible(<span class="syntax-purple">False</span>)
+	plt.savefig(<span class="syntax-green">"images\\"</span> + file[:-<span class="syntax-red">4</span>] + <span class="syntax-green">"_"</span> + <span class="syntax-purple">str</span>(i) + <span class="syntax-green">".png"</span>, bbox_inches=<span class="syntax-green">"tight"</span>, pad_inches=<span class="syntax-red">0</span>)
+</code></pre>
+			<div class="hr"></div>
+		</div>
+	</section>
+	<footer class="footer">
+		<div class="container">
+			<p>Contact</p>
+			<p class="quote">jamesj.jiang@mail.utoronto.ca<br>
+			(647) 995-5178</p>
+			<div class="hr-footer"></div>
+			<div class="logos">
+				<div class="logo-container"><a href="https://www.facebook.com/james.jiang.75" target="_blank"><img src="images/footer-logos/facebook-logo.png" id="facebook-logo"></a></div>
+				<div class="logo-container"><a href="https://github.com/jamesjiang52" target="_blank"><img src="images/footer-logos/github-logo.png" id="github-logo"></a></div>
+				<div class="logo-container"><a href="https://www.linkedin.com/in/james-jiang-09755699/" target="_blank"><img src="images/footer-logos/linkedin-logo.png" id="linkedin-logo"></a></div>
+			</div>
+			<p class="small-text end-text">&copy;2018 James Jiang</>
+		</div>
+	</footer>
+</body>
+</html>

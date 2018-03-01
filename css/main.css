@@ -25,15 +25,16 @@ p { line-height: 1.9; }
 .container {
 	margin-left: auto;
 	margin-right: auto;
-	max-width: 1390px;
+	max-width: 72.4%;
 	overflow-x: hidden;
 }
 
 .quote-container {
 	margin-left: auto;
 	margin-right: auto;
-	max-width: 800px;
+	max-width: 41.7%;
 	overflow-x: visible;
+	margin-bottom: 5px;
 }
 
 .header { padding-top: 50px; }
@@ -67,6 +68,12 @@ p { line-height: 1.9; }
 	border-top: 1px solid #CCCCCC; 
 }
 
+.hr-footer {
+	margin-top: 50px;
+	margin-bottom: 20px;
+	border-top: 1px solid white;
+}
+
 .navbar-nav .nav-link {
 	border-radius: 6px;
 	color: black;
@@ -79,40 +86,46 @@ p { line-height: 1.9; }
 }
 
 .purple-text { color: #650071; }
+.white-text { color: white; }
 
 .quote { font-size: 1rem; }
+.small-text { font-size: 0.8rem; }
+.end-text { padding-top: 50px; }
+
+.syntax-red { color: firebrick; }
+.syntax-blue { color: mediumblue; }
+.syntax-purple { color: darkorchid; }
+.syntax-green {color: green; }
+.syntax-orange {color: darkorange; }
 
 #quotation-open-img {
 	height: 32px;
 	position: relative;
-	right: 75px;
+	right: 9.4%;
 }
 
 #quotation-close-img {
 	height: 32px;
 	position: relative;
-	left: 785px;
+	left: 98.1%;
 	bottom: 40px;
 }
 
-.home-header-img-container {
-	background-image: url("../images/header-img.png");
-	background-size: cover;
-	background-position: 0 -320px;
-	background-repeat: no-repeat;
-	height: 510px;
+#home-header-img {
+	width: 100%;
 	margin-bottom: 50px;
 }
 
-.header-img-container {
-	background-image: url("../images/header-img.png");
-	background-size: cover;
-	background-position: 0 -500px;
-	background-repeat: no-repeat;
-	height: 200px;
+#header-img { width: 100%; }
+
+#about-the-author-img {
+	float: right;
+	height: 500px;
+	margin-top: 10px;
+	margin-left: 30px; 
 }
 
-.section { padding-bottom: 50px; }
+.section { padding-bottom: 75px; }
 
 .title {
 	margin-top: 1rem;
@@ -132,3 +145,52 @@ p { line-height: 1.9; }
 	margin: 0 auto;
 }
 
+.code {
+	font-family: Monaco, monospace;
+	background-color: #efefef;
+	padding: 20px;
+}
+
+.footer {
+	color: white;
+	background: url(../images/footer-img.png);
+	background-size: auto;
+	background-position: bottom right;
+	padding-top: 50px;
+	padding-bottom: 10px;
+}
+
+.logos {
+	position: absolute;
+	left: 45%;
+	display: flex;
+}
+
+.logo-container {
+	width: 50px;
+	height: 30px;
+	overflow: visible;
+}
+
+#facebook-logo {
+	display: block;
+	width: 30px;
+	transition: 0.3s ease; 
+}
+
+#github-logo {
+	display: block;
+	width: 30px;
+	transition: 0.3s ease; 
+}
+
+#linkedin-logo {
+	display: block;
+	width: 30px;
+	transition: 0.3s ease; 
+}
+
+#facebook-logo:hover, #github-logo:hover, #linkedin-logo:hover {
+	transition: 0.3s ease; 
+	width: 40px;
+}
