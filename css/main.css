@@ -145,10 +145,43 @@ p { line-height: 1.9; }
 	margin: 0 auto;
 }
 
-.code {
+pre {
+	font-size: 0.9rem;
+	color: black;
 	font-family: Monaco, monospace;
-	background-color: #efefef;
-	padding: 20px;
+	background-color: #fafafa;
+	margin-top: 25px;
+	margin-bottom: 25px;
+	padding: 20px 20px 10px 20px;
+}
+
+code {
+	font-size: 0.9rem;
+	color: black;
+	font-family: Monaco, monospace;
+	background-color: #fafafa;
+	padding: 5px;
+}
+
+.code {
+	font-size: 0.9rem;
+	color: black;
+	font-family: Monaco, monospace;
+	background-color: #fafafa;
+	margin-top: 25px;
+	margin-bottom: 25px;
+	padding: 20px 20px 10px 20px;
+}
+
+.code p { line-height: 1.6; }
+
+.problem-statement {
+	font-size: 1.05rem;
+	border-left: 2px solid #bfbfbf;
+	background-color: #fafafa;
+	padding: 20px 20px 10px 20px;
+	margin-top: 25px;
+	margin-bottom: 25px;
 }
 
 .footer {
@@ -193,4 +226,30 @@ p { line-height: 1.9; }
 #facebook-logo:hover, #github-logo:hover, #linkedin-logo:hover {
 	transition: 0.3s ease; 
 	width: 40px;
+}
+
+.embed-pdf {
+	border: none;
+	float: right;
+	margin-top: 64px;
+	margin-left: 30px;
+	margin-bottom: 10px;
+	height: 500px;
+	width: 500px;
+}
+
+body::-webkit-scrollbar {
+    width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: #555; 
 }

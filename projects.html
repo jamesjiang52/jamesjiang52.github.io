@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Touching the Sky</title>
+	<link rel="icon" href="images/favicon.png">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/main.css">  
@@ -30,9 +31,143 @@
 				<p>This page will likely be the most frequented part of this website. Here, I'll post and talk a bit about some of the coding projects I've done. As always, all the code I refer to can be found on 
 				<a href="https://github.com/jamesjiang52" target="_blank">my GitHub</a>.</p>
 			<div class="hr"></div>
+			<h3 class="purple-text title">Project Euler</h3>
+				<p>Code available <a href="https://github.com/jamesjiang52/Project-Euler" target="_blank">here</a>.</p>
+				<p>I began this project in the summer of 2017, and it was my first introduction to the wonderful world of Python programming. There's an online web archive, <a href="https://projecteuler.net/archives" target="_blank">
+				<i>Project Euler</i></a>, that contains a little over 600 math problems that one can solve using any programming language of one's choosing. As of now, I've only completed and incorporated (more on that later) around 75
+				of those problems, so there's no foreseeable end to this project. However, as I've said, since the original purpose of this project was for me to get comfortable with Python, I consider this project already
+				<q>completed</q>, though I may continue to work on it a tiny bit in the future.</p>
+				<p>To allow myself to better explain what I did in this project, I'll use <a href="https://projecteuler.net/problem=64" target="_blank">problem 64</a> as an example.
+				<div class="problem-statement">
+					<p>All square roots are periodic when written as continued fractions.</p>
+					<p>Exactly four continued fractions, for N ≤ 13, have an odd period. How many continued fractions for N ≤ 10000 have an odd period?</p>
+				</div>
+				<p>To solve this problem, clearly I first needed to determine the period length of &radic;N for any N. The following function, while not exactly elegant, can get the job done:
+				<div class="code">
+					<p><span class="syntax-blue">import</span> math<br>
+					<br>
+					<span class="syntax-blue">def</span> len_fraction_expansion_sqrt_period(x):<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-green">"""<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;Returns the period length of the continued fraction expansion of sqrt(x)<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;"""</span><br>
+						&nbsp;&nbsp;&nbsp;&nbsp;a_0 = math.floor(math.sqrt(x))<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;b = a_0<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;c = x - a_0**<span class="syntax-red">2</span><br>
+						&nbsp;&nbsp;&nbsp;&nbsp;len_ = <span class="syntax-red">1</span><br>
+						&nbsp;&nbsp;&nbsp;&nbsp;seen = [[b, c]]<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-blue">while</span> <span class="syntax-purple">True</span>:<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a = math.floor((a_0 + b)/c)<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b = <span class="syntax-purple">int</span>(a*c - b)<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c = <span class="syntax-purple">int</span>((x - b**<span class="syntax-red">2</span>)/c)<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-blue">if</span> [b, c] <span class="syntax-blue">in</span> seen:<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-blue">return</span>(len_)<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;seen.append([b, c])<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;len_ += <span class="syntax-red">1</span></p>
+				</div>
+				<p>Basically, the function keeps calculating the remainder term of the fraction expansion and retains a list of all the <code>b</code>'s and <code>c</code>'s it's seen before (exactly what they represent can 
+				be found out in more detail on page 5 of <a href="http://web.math.princeton.edu/mathlab/jr02fall/Periodicity/mariusjp.pdf" target="_blank">this</a> paper). When it encounters a pair <code>[b, c]</code> that's 
+				in the list already, it returns the length of the list	&ndash; the period length.</p>
+				<p>Having written this function, it's a simple matter now to compute the answer to the problem. One caveat, however, is to skip over trying to find the period length of a perfect square.
+				<div class="code">
+					<p>count = <span class="syntax-red">0</span><br>
+					<span class="syntax-blue">for</span> N <span class="syntax-blue">in</span> <span class="syntax-purple">range</span>(<span class="syntax-red">2</span>, <span class="syntax-red">10001</span>):<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-blue">if not</span> is_square(N):<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-blue">if</span> len_fraction_expansion_sqrt_period(N) % <span class="syntax-red">2</span> == <span class="syntax-red">1</span>:<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count += <span class="syntax-red">1</span><br>
+					<span class="syntax-purple">print</span>(<span class="syntax-green">"Answer:"</span>, count)</p>
+				</div>
+				<p>All of my function definitions can be found in the file <code>functions.py</code>. For example, <code>is_square()</code> is defined in that file as
+				<div class="code">
+					<p><span class="syntax-blue">def</span> is_square(x):</span><br>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-green">"""</span><br>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-green">Checks if x is a square number</span><br>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-green">"""</span><br>
+						&nbsp;&nbsp;&nbsp;&nbsp;n = math.sqrt(x)<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-blue">return</span>(n == <span class="syntax-purple">round</span>(n))</p>
+				</div>
+				<p>Running the entire script gives the following (correct) output:</p>
+				<div class="code">
+					<p>Answer: 1322</p>
+				</div>
+				<p>Now that's all well and good, but don't you think it's missing that little <em>something</em> that would make it less of a programming exercise and more of an actual project?</p>
+				<p>Cue in my progress bar script, <code>progress.py</code>, and my manager script, <code>_project_euler.py</code>. Used together, these two things were supposed to look like a hacker-ish-looking terminal thing 
+				(yes, like in the movies), just for me to have a little fun. Every problem from 1 to 75 (and maybe more in the future) instantiates the class <code>Progress()</code> from <code>progress.py</code>, which includes
+				a progress bar, made with ASCII art, a timer, and an integer representing the current value being <q>checked</q> by the solution script. These attributes are constantly being updated and printed to the terminal, 
+				so the running time of the solution scripts do increase a bit. But hey, it looks cool, right?</p>
+				<p>To facilitate all this, the manager simply imports the solution scripts in numerical order as modules. Now, all the problems can be solved by running just one script, and the progress of each problem is
+				tracked using <code>Progress()</code>.</p>
+				<p>The entire code for <code>progress.py</code> is on my GitHub, so let's not dwell on that too long. Instead, to see how I use it, let's go back to problem 64. I've instantiated the class as follows:
+				<div class="code">
+					<p><span class="syntax-blue">from</span> progress <span class="syntax-blue">import</span> Progress<br>
+					<br>
+					answers_list = [<span class="syntax-green">'dummy'</span>]<br>
+					answers_list.extend([<span class="syntax-purple">int</span>(line.rstrip(<span class="syntax-green">'\n'</span>)) <span class="syntax-blue">for</span> line <span class="syntax-blue">in</span> <span class="syntax-purple">open</span>(<span class="syntax-green">'C:\\Users\\James Jiang\\Documents\\Project Euler\\answers.txt'</span>)])<br>
+					progress_ = Progress(<span class="syntax-green">"Problem 064: Odd period square roots"</span>, <span class="syntax-red">0</span>, answers_list[<span class="syntax-red">64</span>])</p>
+				</div>
+				<p>(Here, <code>answers.txt</code>, as the name suggests, is just a text file I've used to store the answers to all the problems I've solved.)</p>
+				<p>The first parameter of <code>__init__()</code> is simply the name of the problem, a string, which does not change. The second, <code>count</code>, is the current value used in determining how much of the 
+				progress bar should be filled in. The last parameter, <code>total</code>, is of course the total value of the progress bar. Note that, in some problems, for aesthetic purposes (to make the progress bar update 
+				smoother, for example), the starting and ending values of these two parameters may be different or have widely varying orders of magnitude.</p>
+				<p>Now, we can iterate through all the values of N from 2 to 10000 like this:</p>
+				<div class="code">
+					<span class="syntax-blue">for</span> N <span class="syntax-blue">in</span> <span class="syntax-purple">range</span>(<span class="syntax-red">2</span>, <span class="syntax-red">10001</span>):<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-blue">if not</span> is_square(N):<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-blue">if</span> len_fraction_expansion_sqrt_period(N) % <span class="syntax-red">2</span> == <span class="syntax-red">1</span>:<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;progress_.count += <span class="syntax-red">1</span><br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;progress_.progress()</p>
+				</div>
+				<p><code>progress()</code> is the function that updates the progress bar, timer, and so on, and prints their current values to the terminal. The final printed attributes look like</p>
+				<div class="code">
+					<p>[00:00.718] [####################] 100.0%&nbsp;&nbsp;|&nbsp;&nbsp;Problem 064: Odd period square roots&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1322</p>
+				</div>
+				<p>Hey, that doesn't look too bad!</p>
+				<p>Turning to <code>_project_euler.py</code> now, all we have to do is import all the solution scripts.</p>
+				<div class="code">
+				    <p><span class="syntax-blue">import</span> problem_1<br>
+					<span class="syntax-blue">import</span> problem_2<br>
+					<span class="syntax-blue">import</span> problem_3<br>
+					<span class="syntax-blue">import</span> problem_4<br>
+					<span class="syntax-blue">import</span> problem_5</p>
+				</div>
+				<p>... and so on.</p> Running just the first 5 solution scripts, we end up with the following output:
+				<div class="code">
+					[00:00.031] [####################] 100.0%&nbsp;&nbsp;|&nbsp;&nbsp;Problem 001: Multiples of 3 and 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 233168<br>
+					[00:00.001] [####################] 100.0%&nbsp;&nbsp;|&nbsp;&nbsp;Problem 002: Even Fibonacci numbers&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 4613732<br>
+					[00:00.179] [####################] 100.0%&nbsp;&nbsp;|&nbsp;&nbsp;Problem 003: Largest prime factor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 6857<br>
+					[00:00.388] [####################] 100.0%&nbsp;&nbsp;|&nbsp;&nbsp;Problem 004: Largest palindrome product&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 906609<br>
+					[00:00.005] [####################] 100.0%&nbsp;&nbsp;|&nbsp;&nbsp;Problem 005: Smallest multiple&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 232792560</p>
+				</div>
+				<p>At this point, the entire thing is looking pretty good, and I could've ended this project here and moved on. However, I did feel like the script began kind of abruptly, and ended abruptly as well. Wouldn't
+				it be great if there were some sort of introduction to the project before all the solution scripts were imported, and if there were a summary at the end when all the problems were solved? Well, those were exactly
+				what I implemented next. I wanted the introduction to be animated, but since Python wasn't exactly built for that sort of thing, I was satisfied with just printing a frame, clearing the entire terminal, then
+				printing the next frame. I used ASCII art for this part as well. When the entire introduction animation is finished playing, here's what it looks like:</p>
+				<pre>__________________________________________________________________________
+           _____           _         _      _____     _
+          |  _  |___ ___  |_|___ ___| |_   |   __|_ _| |___ ___
+          |   __|  _| . | | | -_|  _|  _|  |   __| | | | -_|  _|
+          |__|  |_| |___|_| |___|___|_|    |_____|___|_|___|_|
+                        |___|
+__________________________________________________________________________
+
+
+Problems are available at https://projecteuler.net/archives.
+Press ENTER to initiate.
+				</pre>
+				<p>The end text I added includes a summary of the number of problems solved and the total elapsed time. For example, running the first five solution scripts gives</p>
+				<div class="code">
+				<p>5 problems were solved. The total elapsed time was 00:00.604.<br>
+				Press ENTER to exit.</p>
+				</div>
+				<p>And this is where I decided to conclude this project.</p>
+				<h4 class="purple-text title">Closing</h4>
+				<p>I felt that I gave myself an extremely solid start in Python by completing this, and that that start would serve me well as I got into more advanced Python stuff.
+				Even now, I occasionally look back on this project and try to extend it by solving more problems in the archive, but I find myself limited not by my programming ability, but by my math ability. Even in this brief
+				introduction, I mentioned I had to read actual mathematics papers in order to develop an adequate algorithm. Once I gain that background, the implementation is fairly standard, and I daresay that the problem gets
+				<em>significantly</em> easier as well.</p>
+			<div class="hr"></div>
 			<h3 class="purple-text title">Unbound</h3>
 				<p>Code available <a href="https://github.com/jamesjiang52/Unbound" target="_blank">here</a>.</p>
-<pre class="code"><code><span class="syntax-blue">public</span> <span class="syntax-purple">void</span> LoseHealth (<span class="syntax-purple">float</span> amount) {
+<div class="code"><span class="syntax-blue">public</span> <span class="syntax-purple">void</span> LoseHealth (<span class="syntax-purple">float</span> amount) {
 	damaged = <span class="syntax-blue">true</span>;
 	<span class="syntax-blue">if</span> (playerAttack.isBlocking)
 		amount *= (<span class="syntax-orange">1f</span>/playerAttack.blockReduceDamage);
@@ -45,34 +180,12 @@
 	healthBar.<span class="syntax-blue">value</span> = currentHealth;
 	healthRegenTimer = <span class="syntax-orange">0f</span>;
 	playerMovement.adjustedSprintSpeed = playerMovement.movementSpeed;
-}</code></pre>
-			<div class="hr"></div>
-			<h3 class="purple-text title">Project Euler</h3>
-				<p>Code available <a href="https://github.com/jamesjiang52/Project-Euler" target="_blank">here</a>.</p>
-<pre><div class="code"><span class="syntax-blue">import</span> math
-
-<span class="syntax-blue">def</span> len_fraction_expansion_sqrt_period(x):
-	<span class="syntax-green">"""
-	Returns the period length of the continued fraction expansion of sqrt(x)
-	"""</span>
-	a_0 = math.floor(math.sqrt(x))
-	b = a_0
-	c = x - a_0**<span class="syntax-red">2</span>
-	len_ = <span class="syntax-red">1</span>
-	seen = [[b, c]]
-	<span class="syntax-blue">while</span> <span class="syntax-purple">True</span>:
-		a = math.floor((a_0 + b)/c)
-		b = <span class="syntax-purple">int</span>(a*c - b)
-		c = <span class="syntax-purple">int</span>((x - b**<span class="syntax-red">2</span>)/c)
-		<span class="syntax-blue">if</span> [b, c] <span class="syntax-blue">in</span> seen:
-			<span class="syntax-blue">return</span>(len_)
-		seen.append([b, c])
-		len_ += <span class="syntax-red">1</span>
-</div></pre>
+}</div>
+				<p>Content coming soon!</p>
 			<div class="hr"></div>
 			<h3 class="purple-text title">Chord For Me</h3>
 				<p>Code available <a href="https://github.com/eddddddy/ChordForMe" target="_blank">here</a>.</p>
-<pre class="code"><code>sample_rate, samples = wavfile.read(<span class="syntax-green">"chordrecordings\\"</span> + directory + file)
+<div class="code">sample_rate, samples = wavfile.read(<span class="syntax-green">"chordrecordings\\"</span> + directory + file)
 frequencies, times, spectrogram = signal.spectrogram(samples, sample_rate, nperseg=<span class="syntax-red">2048</span>)
 plt.pcolormesh(times, frequencies, spectrogram)
 <span class="syntax-blue">for</span> i <span class="syntax-blue">in</span> <span class="syntax-purple">range</span>(<span class="syntax-red">16</span>):
@@ -82,7 +195,8 @@ plt.pcolormesh(times, frequencies, spectrogram)
 	ax.get_xaxis().set_visible(<span class="syntax-purple">False</span>)
 	ax.get_yaxis().set_visible(<span class="syntax-purple">False</span>)
 	plt.savefig(<span class="syntax-green">"images\\"</span> + file[:-<span class="syntax-red">4</span>] + <span class="syntax-green">"_"</span> + <span class="syntax-purple">str</span>(i) + <span class="syntax-green">".png"</span>, bbox_inches=<span class="syntax-green">"tight"</span>, pad_inches=<span class="syntax-red">0</span>)
-</code></pre>
+</div>
+			<p>Content coming soon!</p>
 			<div class="hr"></div>
 		</div>
 	</section>
