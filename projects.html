@@ -5,14 +5,14 @@
 	<title>Touching the Sky</title>
 	<link rel="icon" href="images/favicon.png">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/main.css">  
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/main.css">  
 </head>
 <body>
 	<section class="header">
 		<div class="container">
 			<div class="header-inner">
-				<h1 class="site-name">Touching the Sky</h1>
+				<a href="index.html"><h1 class="site-name">Touching the Sky</h1></a>
 				<nav class="navbar main-nav">
 					<ul class="nav navbar-nav">
 						<li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
@@ -28,8 +28,8 @@
 	<section class="section">
 		<div class="container">
 			<h2 class="purple-text title">Projects</h2>
-				<p>This page will likely be the most frequented part of this website. Here, I'll post and talk a bit about some of the coding projects I've done. As always, all the code I refer to can be found on 
-				<a href="https://github.com/jamesjiang52" target="_blank">my GitHub</a>.</p>
+				<p>This page will likely be the most updated part of this website. Here, I'll post and talk a bit about some of the coding projects I've done, but I won't go in depth. As always, all the code I refer to 
+				can be found on <a href="https://github.com/jamesjiang52" target="_blank">my GitHub</a>.</p>
 			<div class="hr"></div>
 			<h3 class="purple-text title">Project Euler</h3>
 				<p>Code available <a href="https://github.com/jamesjiang52/Project-Euler" target="_blank">here</a>.</p>
@@ -37,12 +37,12 @@
 				<i>Project Euler</i></a>, that contains a little over 600 math problems that one can solve using any programming language of one's choosing. As of now, I've only completed and incorporated (more on that later) around 75
 				of those problems, so there's no foreseeable end to this project. However, as I've said, since the original purpose of this project was for me to get comfortable with Python, I consider this project already
 				<q>completed</q>, though I may continue to work on it a tiny bit in the future.</p>
-				<p>To allow myself to better explain what I did in this project, I'll use <a href="https://projecteuler.net/problem=64" target="_blank">problem 64</a> as an example.
+				<p>To allow myself to better explain what I did in this project, I'll use <a href="https://projecteuler.net/problem=64" target="_blank">problem 64</a> as an example.</p>
 				<div class="problem-statement">
 					<p>All square roots are periodic when written as continued fractions.</p>
 					<p>Exactly four continued fractions, for N ≤ 13, have an odd period. How many continued fractions for N ≤ 10000 have an odd period?</p>
 				</div>
-				<p>To solve this problem, clearly I first needed to determine the period length of &radic;N for any N. The following function, while not exactly elegant, can get the job done:
+				<p>To solve this problem, clearly I first needed to write a function that could determine the period length of &radic;N for any N. The following function, while not exactly elegant, can get the job done:</p>
 				<div class="code">
 					<p><span class="syntax-blue">import</span> math<br>
 					<br>
@@ -67,7 +67,7 @@
 				<p>Basically, the function keeps calculating the remainder term of the fraction expansion and retains a list of all the <code>b</code>'s and <code>c</code>'s it's seen before (exactly what they represent can 
 				be found out in more detail on page 5 of <a href="http://web.math.princeton.edu/mathlab/jr02fall/Periodicity/mariusjp.pdf" target="_blank">this</a> paper). When it encounters a pair <code>[b, c]</code> that's 
 				in the list already, it returns the length of the list	&ndash; the period length.</p>
-				<p>Having written this function, it's a simple matter now to compute the answer to the problem. One caveat, however, is to skip over trying to find the period length of a perfect square.
+				<p>Having written this function, it's a simple matter now to compute the answer to the problem. One caveat, however, is to skip over trying to find the period length of a perfect square.</p>
 				<div class="code">
 					<p>count = <span class="syntax-red">0</span><br>
 					<span class="syntax-blue">for</span> N <span class="syntax-blue">in</span> <span class="syntax-purple">range</span>(<span class="syntax-red">2</span>, <span class="syntax-red">10001</span>):<br>
@@ -76,7 +76,7 @@
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count += <span class="syntax-red">1</span><br>
 					<span class="syntax-purple">print</span>(<span class="syntax-green">"Answer:"</span>, count)</p>
 				</div>
-				<p>All of my function definitions can be found in the file <code>functions.py</code>. For example, <code>is_square()</code> is defined in that file as
+				<p>All of my function definitions can be found in the file <code>functions.py</code>. For example, <code>is_square()</code> is defined in that file as</p>
 				<div class="code">
 					<p><span class="syntax-blue">def</span> is_square(x):</span><br>
 						&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-green">"""</span><br>
@@ -96,7 +96,7 @@
 				so the running time of the solution scripts do increase a bit. But hey, it looks cool, right?</p>
 				<p>To facilitate all this, the manager simply imports the solution scripts in numerical order as modules. Now, all the problems can be solved by running just one script, and the progress of each problem is
 				tracked using <code>Progress()</code>.</p>
-				<p>The entire code for <code>progress.py</code> is on my GitHub, so let's not dwell on that too long. Instead, to see how I use it, let's go back to problem 64. I've instantiated the class as follows:
+				<p>The entire code for <code>progress.py</code> is on my GitHub, so let's not dwell on that too long. Instead, to see how I use it, let's go back to problem 64. I've instantiated the class as follows:</p>
 				<div class="code">
 					<p><span class="syntax-blue">from</span> progress <span class="syntax-blue">import</span> Progress<br>
 					<br>
@@ -129,7 +129,7 @@
 					<span class="syntax-blue">import</span> problem_4<br>
 					<span class="syntax-blue">import</span> problem_5</p>
 				</div>
-				<p>... and so on.</p> Running just the first 5 solution scripts, we end up with the following output:
+				<p>... and so on.</p> Running just the first 5 solution scripts, we end up with the following output:</p>
 				<div class="code">
 					[00:00.031] [####################] 100.0%&nbsp;&nbsp;|&nbsp;&nbsp;Problem 001: Multiples of 3 and 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 233168<br>
 					[00:00.001] [####################] 100.0%&nbsp;&nbsp;|&nbsp;&nbsp;Problem 002: Even Fibonacci numbers&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 4613732<br>
@@ -155,8 +155,8 @@ Press ENTER to initiate.
 				</pre>
 				<p>The end text I added includes a summary of the number of problems solved and the total elapsed time. For example, running the first five solution scripts gives</p>
 				<div class="code">
-				<p>5 problems were solved. The total elapsed time was 00:00.604.<br>
-				Press ENTER to exit.</p>
+					<p>5 problems were solved. The total elapsed time was 00:00.604.<br>
+					Press ENTER to exit.</p>
 				</div>
 				<p>And this is where I decided to conclude this project.</p>
 				<h4 class="purple-text title">Closing</h4>
@@ -165,38 +165,67 @@ Press ENTER to initiate.
 				introduction, I mentioned I had to read actual mathematics papers in order to develop an adequate algorithm. Once I gain that background, the implementation is fairly standard, and I daresay that the problem gets
 				<em>significantly</em> easier as well.</p>
 			<div class="hr"></div>
+			<h3 class="purple-text title">Synacor Challenge</h3>
+				<p>Code available <a href="https://github.com/jamesjiang52/Synacor-Challenge" target="_blank">here</a>.</p>
+				<p>Admittedly, the Synacor Challenge was much less of a personal side project and more of an elaborate programming puzzle that consumed my life for one or two weeks. The architect of the challenge, Eric Wastl, is
+				also the creator of Advent of Code, an annual online event consisting of coding puzzles leading up to Christmas Day. After this event in 2017, I still had the urge to solve more programming puzzles, and so I
+				turned to solving this challenge.</p>
+				<p>The premise of the puzzle was quite simple, or so I thought. I was given a text file containing architectural specifications, and I needed to write a virtual machine that adhered to those specifications and 
+				which was capable of running the provided binary file <code>challenge.bin</code>. To summarize, I needed to implement three storage regions: memory with a 15-bit address space, eight registers, and an unbounded
+				stack. There were a total of 22 assembly-esque operations that could be executed, ranging from making comparisons between two numbers, to reading and writing memory, to halting the program. Throughout the
+				challenge, there would be <q>codes</q> available that would track your progress. There were eight codes in total, so that was my first hint that this challenge would be more extensive that I had thought.</p>
+				<p>Once I had gone over all the operations, it was a simple matter to implement them. I created a class, <code>Instruction()</code>, that contained a number of functions, each corresponding to an operation.
+				For example, the operation <code>call</code> has opcode <code>17</code> and takes one argument <code>a</code>. It is called as follows:</p>
+				<div class="code">
+					<p>17 a</p>
+				</div>
+				<p>When it is executed, it writes the address of the next instruction to the stack and jumps to the memory location represented by <code>a</code>. As a class function, it is simply</p>
+				<div class="code">
+					<p><span class="syntax-blue">def</span> call_(<span class="syntax-brown syntax-italic">self</span>):<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-brown syntax-italic">self</span>.stack.append(<span class="syntax-brown syntax-italic">self</span>.memory_address + <span class="syntax-red">2</span>)<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-brown syntax-italic">self</span>.memory_address = <span class="syntax-brown syntax-italic">self</span>.register_value(<span class="syntax-brown syntax-italic">self</span>.memory[<span class="syntax-brown syntax-italic">self</span>.memory_address + <span class="syntax-red">1</span>])</p>
+				</div>
+				<p>where <code>stack</code>, <code>memory_address</code> and <code>registers</code> are class variables defined in <code>__init__()</code> and <code>register_value()</code> is a class function defined as</p>
+				<div class="code">
+					<p><span class="syntax-blue">def</span> register_value(<span class="syntax-brown syntax-italic">self</span>, n):<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-blue">if</span> n i<span class="syntax-blue">n</span> <span class="syntax-purple">range</span>(<span class="syntax-red">32768</span>):<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-blue">return</span>(n)<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-blue">else</span>:<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-blue">return</span>(<span class="syntax-brown syntax-italic">self</span>.registers[n])</p>
+				</div>
+			<div class="hr"></div>
 			<h3 class="purple-text title">Unbound</h3>
 				<p>Code available <a href="https://github.com/jamesjiang52/Unbound" target="_blank">here</a>.</p>
-<div class="code"><span class="syntax-blue">public</span> <span class="syntax-purple">void</span> LoseHealth (<span class="syntax-purple">float</span> amount) {
-	damaged = <span class="syntax-blue">true</span>;
-	<span class="syntax-blue">if</span> (playerAttack.isBlocking)
-		amount *= (<span class="syntax-orange">1f</span>/playerAttack.blockReduceDamage);
-	<span class="syntax-blue">if</span> (currentHealth - amount > <span class="syntax-orange">0f</span>)
-		currentHealth -= amount;
-	<span class="syntax-blue">else</span> {
-		currentHealth = <span class="syntax-orange">0f</span>;
-		Death ();
-	}
-	healthBar.<span class="syntax-blue">value</span> = currentHealth;
-	healthRegenTimer = <span class="syntax-orange">0f</span>;
-	playerMovement.adjustedSprintSpeed = playerMovement.movementSpeed;
-}</div>
+				<div class="code"><span class="syntax-blue">public</span> <span class="syntax-purple">void</span> LoseHealth (<span class="syntax-purple">float</span> amount) {
+					damaged = <span class="syntax-blue">true</span>;
+					<span class="syntax-blue">if</span> (playerAttack.isBlocking)
+						amount *= (<span class="syntax-orange">1f</span>/playerAttack.blockReduceDamage);
+					<span class="syntax-blue">if</span> (currentHealth - amount > <span class="syntax-orange">0f</span>)
+						currentHealth -= amount;
+					<span class="syntax-blue">else</span> {
+						currentHealth = <span class="syntax-orange">0f</span>;
+						Death ();
+					}
+					healthBar.<span class="syntax-blue">value</span> = currentHealth;
+					healthRegenTimer = <span class="syntax-orange">0f</span>;
+					playerMovement.adjustedSprintSpeed = playerMovement.movementSpeed;
+				}</div>
 				<p>Content coming soon!</p>
 			<div class="hr"></div>
 			<h3 class="purple-text title">Chord For Me</h3>
 				<p>Code available <a href="https://github.com/eddddddy/ChordForMe" target="_blank">here</a>.</p>
-<div class="code">sample_rate, samples = wavfile.read(<span class="syntax-green">"chordrecordings\\"</span> + directory + file)
-frequencies, times, spectrogram = signal.spectrogram(samples, sample_rate, nperseg=<span class="syntax-red">2048</span>)
-plt.pcolormesh(times, frequencies, spectrogram)
-<span class="syntax-blue">for</span> i <span class="syntax-blue">in</span> <span class="syntax-purple">range</span>(<span class="syntax-red">16</span>):
-	plt.axis([<span class="syntax-red">0</span>.<span class="syntax-red">064</span>/<span class="syntax-red">3</span> + i*<span class="syntax-red">0</span>.<span class="syntax-red">112</span>/<span class="syntax-red">3</span>, <span class="syntax-red">0</span>.<span class="syntax-red">064</span>/<span class="syntax-red">3</span> + (i + <span class="syntax-red">1</span>)*<span class="syntax-red">0</span>.<span class="syntax-red">112</span>/<span class="syntax-red">3</span>, <span class="syntax-red">0</span>, <span class="syntax-red">5000</span>])
-	plt.axis(<span class="syntax-green">"off"</span>)
-	ax = plt.gca()
-	ax.get_xaxis().set_visible(<span class="syntax-purple">False</span>)
-	ax.get_yaxis().set_visible(<span class="syntax-purple">False</span>)
-	plt.savefig(<span class="syntax-green">"images\\"</span> + file[:-<span class="syntax-red">4</span>] + <span class="syntax-green">"_"</span> + <span class="syntax-purple">str</span>(i) + <span class="syntax-green">".png"</span>, bbox_inches=<span class="syntax-green">"tight"</span>, pad_inches=<span class="syntax-red">0</span>)
-</div>
-			<p>Content coming soon!</p>
+				<div class="code">sample_rate, samples = wavfile.read(<span class="syntax-green">"chordrecordings\\"</span> + directory + file)
+				frequencies, times, spectrogram = signal.spectrogram(samples, sample_rate, nperseg=<span class="syntax-red">2048</span>)
+				plt.pcolormesh(times, frequencies, spectrogram)
+				<span class="syntax-blue">for</span> i <span class="syntax-blue">in</span> <span class="syntax-purple">range</span>(<span class="syntax-red">16</span>):
+					plt.axis([<span class="syntax-red">0</span>.<span class="syntax-red">064</span>/<span class="syntax-red">3</span> + i*<span class="syntax-red">0</span>.<span class="syntax-red">112</span>/<span class="syntax-red">3</span>, <span class="syntax-red">0</span>.<span class="syntax-red">064</span>/<span class="syntax-red">3</span> + (i + <span class="syntax-red">1</span>)*<span class="syntax-red">0</span>.<span class="syntax-red">112</span>/<span class="syntax-red">3</span>, <span class="syntax-red">0</span>, <span class="syntax-red">5000</span>])
+					plt.axis(<span class="syntax-green">"off"</span>)
+					ax = plt.gca()
+					ax.get_xaxis().set_visible(<span class="syntax-purple">False</span>)
+					ax.get_yaxis().set_visible(<span class="syntax-purple">False</span>)
+					plt.savefig(<span class="syntax-green">"images\\"</span> + file[:-<span class="syntax-red">4</span>] + <span class="syntax-green">"_"</span> + <span class="syntax-purple">str</span>(i) + <span class="syntax-green">".png"</span>, bbox_inches=<span class="syntax-green">"tight"</span>, pad_inches=<span class="syntax-red">0</span>)
+				</div>
+				<p>Content coming soon!</p>
 			<div class="hr"></div>
 		</div>
 	</section>
@@ -207,11 +236,26 @@ plt.pcolormesh(times, frequencies, spectrogram)
 			(647) 995-5178</p>
 			<div class="hr-footer"></div>
 			<div class="logos">
-				<div class="logo-container"><a href="https://www.facebook.com/james.jiang.75" target="_blank"><img src="images/footer-logos/facebook-logo.png" id="facebook-logo"></a></div>
-				<div class="logo-container"><a href="https://github.com/jamesjiang52" target="_blank"><img src="images/footer-logos/github-logo.png" id="github-logo"></a></div>
-				<div class="logo-container"><a href="https://www.linkedin.com/in/james-jiang-09755699/" target="_blank"><img src="images/footer-logos/linkedin-logo.png" id="linkedin-logo"></a></div>
+				<div class="logo-container">
+					<a href="https://www.facebook.com/james.jiang.75" target="_blank">
+						<img src="images/footer-logos/facebook-logo-hover.png" class="facebook-logo">
+						<img src="images/footer-logos/facebook-logo.png" class="top facebook-logo">
+					</a>
+				</div>
+				<div class="logo-container">
+					<a href="https://github.com/jamesjiang52" target="_blank">
+						<img src="images/footer-logos/github-logo-hover.png" class="github-logo">
+						<img src="images/footer-logos/github-logo.png" class="top github-logo">
+					</a>
+				</div>
+				<div class="logo-container">
+					<a href="https://www.linkedin.com/in/james-jiang-09755699/" target="_blank">
+						<img src="images/footer-logos/linkedin-logo-hover.png" class="linkedin-logo">
+						<img src="images/footer-logos/linkedin-logo.png" class="top linkedin-logo">
+					</a>
+				</div>
 			</div>
-			<p class="small-text end-text">&copy;2018 James Jiang</>
+			<p class="small-text end-text">&copy;2018 James Jiang</p>
 		</div>
 	</footer>
 </body>

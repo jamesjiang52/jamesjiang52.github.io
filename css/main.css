@@ -1,6 +1,6 @@
 body {
 	color: #8c8c8c;
-	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+	font-family: "Open Sans", Helvetica, Arial, sans-serif;
 	font-size: 18px;
 	font-weight: 300;
 	overflow-x: hidden;
@@ -69,8 +69,8 @@ p { line-height: 1.9; }
 }
 
 .hr-footer {
-	margin-top: 50px;
-	margin-bottom: 20px;
+	margin-top: 40px;
+	margin-bottom: 25px;
 	border-top: 1px solid white;
 }
 
@@ -90,13 +90,15 @@ p { line-height: 1.9; }
 
 .quote { font-size: 1rem; }
 .small-text { font-size: 0.8rem; }
-.end-text { padding-top: 50px; }
+.end-text { padding-top: 40px; }
 
 .syntax-red { color: firebrick; }
 .syntax-blue { color: mediumblue; }
 .syntax-purple { color: darkorchid; }
-.syntax-green {color: green; }
-.syntax-orange {color: darkorange; }
+.syntax-green { color: green; }
+.syntax-orange { color: darkorange; }
+.syntax-brown { color: #C2590E; }
+.syntax-italic { font-style: italic; }
 
 #quotation-open-img {
 	height: 32px;
@@ -123,6 +125,14 @@ p { line-height: 1.9; }
 	height: 500px;
 	margin-top: 10px;
 	margin-left: 30px; 
+}
+
+.img-caption-small {
+	font-size: 0.95rem;
+}
+
+.img-caption-centered {
+	text-align: center;
 }
 
 .section { padding-bottom: 75px; }
@@ -200,32 +210,41 @@ code {
 }
 
 .logo-container {
-	width: 50px;
+	width: 45px;
 	height: 30px;
 	overflow: visible;
 }
 
-#facebook-logo {
+.facebook-logo {
 	display: block;
-	width: 30px;
-	transition: 0.3s ease; 
+	width: 25px;
+	position: relative;
+	left: 23%;
 }
 
-#github-logo {
+.github-logo {
 	display: block;
-	width: 30px;
-	transition: 0.3s ease; 
+	width: 25px;
+	position: relative;
+	left: 50%;
+	bottom: 6px;
 }
 
-#linkedin-logo {
+.linkedin-logo {
 	display: block;
-	width: 30px;
-	transition: 0.3s ease; 
+	width: 25px;
+	position: relative;
+	top: 2px;
+	right: 7%;
 }
 
-#facebook-logo:hover, #github-logo:hover, #linkedin-logo:hover {
-	transition: 0.3s ease; 
-	width: 40px;
+.logo-container img {
+  position: absolute;
+  transition: opacity 0.3s ease;
+}
+
+.logo-container img.top:hover {
+  opacity: 0;
 }
 
 .embed-pdf {
@@ -233,9 +252,9 @@ code {
 	float: right;
 	margin-top: 64px;
 	margin-left: 30px;
-	margin-bottom: 10px;
-	height: 500px;
-	width: 500px;
+	margin-bottom: 20px;
+	height: 400px;
+	width: 420px;
 }
 
 body::-webkit-scrollbar {
@@ -252,4 +271,8 @@ body::-webkit-scrollbar-thumb {
 
 body::-webkit-scrollbar-thumb:hover {
     background: #555; 
+}
+
+#gallery-photography {
+	padding-top: 15px;
 }

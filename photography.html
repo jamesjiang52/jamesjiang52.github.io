@@ -5,18 +5,29 @@
 	<title>Touching the Sky</title>
 	<link rel="icon" href="images/favicon.png">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/main.css">  
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/unitegallery.css">
+	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 	<section class="header">
 		<div class="container">
 			<div class="header-inner">
-				<h1 class="site-name">Touching the Sky</h1>
+				<a href="index.html"><h1 class="site-name">Touching the Sky</h1></a>
 				<nav class="navbar main-nav">
 					<ul class="nav navbar-nav">
 						<li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-						<li class="nav-item"><a href="research.html" class="nav-link">Research</a></li>
+						<li class="nav-item">
+							<a href="research.html" class="nav-link">Research</a>
+							<!--
+							<ul>
+								<li><a href="research.html#modelling-essay-1">Tic-Tac-Toe as Linear Algebra</li>
+								<li><a href="research.html#esp-1">Early Detection of Forest Fires</li>
+								<li><a href="research.html#modelling-essay-2">Cooling Computer Components</li>
+								<li><a href="research.html#bmec">Rehabilitative Gloves for Multiple Sclerosis</li>
+								<li><a href="research.html#esp-2">Compact Adjustable Bed</li>
+							</ul>-->
+						</li>
 						<li class="nav-item active"><a href="photography.html" class="nav-link">Photography</a></li>
 						<li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
 					</ul>
@@ -30,31 +41,22 @@
 			<h2 class="purple-text title">Photography</h2>
 				<p>This is a gallery of what I think are some pretty cool screenshots I've taken in <i>Skyrim</i>, using a ReShade known as 
 				<a href="https://www.nexusmods.com/skyrimspecialedition/mods/8437" target="_blank">Skyshade II ReShade</a>, and put through some filters from the <a href="http://photogramio.com" target="_blank">Photogramio</a> online photo 
-				editor. I'll refrain from posting a modlist, as the list is constantly changing and keeping it updated will be nearly impossible. </p>
-			<figure>
-				<img src="images/skyrim/cosmic-fugue.png" width="70%">
-				<figcaption>Cosmic Fugue</figcaption>
-			</figure>
-			<figure>
-				<img src="images/skyrim/solitude-windmill.png" width="70%">
-				<figcaption>Solitude Windmill</figcaption>
-			</figure>
-			<figure>
-				<img src="images/skyrim/unassuming-docks.png" width="70%">
-				<figcaption>Unassuming Docks</figcaption>
-			</figure>
-			<figure>
-				<img src="images/skyrim/winking-skeever.png" width="70%">
-				<figcaption>The Winking Skeever</figcaption>
-			</figure>
-			<figure>
-				<img src="images/skyrim/touching-the-sky.png" width="70%">
-				<figcaption>Touching the Sky</figcaption>
-			</figure>
-			<figure>
-				<img src="images/skyrim/city-of-stone.png" width="70%">
-				<figcaption>City of Stone</figcaption>
-			</figure>
+				editor. I'll refrain from posting a modlist, as the list is constantly changing and keeping it updated will be nearly impossible.</p>
+				<div id="gallery-photography">
+					<img src="images/skyrim/sun's-height.png" alt="Sun's Height">
+					<img src="images/skyrim/man-and-divine.png" alt="Man and Divine">
+					<img src="images/skyrim/lake-ilinalta.png" alt="Lake Ilinalta">
+					<img src="images/skyrim/fallen.png" alt="The Fallen">
+					<img src="images/skyrim/white-river.png" alt="White River">
+					<img src="images/skyrim/streets-of-whiterun.png" alt="Streets of Whiterun">
+					<img src="images/skyrim/sky-haven.png" alt="Sky Haven">
+					<img src="images/skyrim/cosmic-fugue.png" alt="Cosmic Fugue">
+					<img src="images/skyrim/solitude-windmill.png" alt="Solitude Windmill">
+					<img src="images/skyrim/hearthfire.png" alt="Hearthfire">
+					<img src="images/skyrim/winking-skeever.png" alt="The Winking Skeever">
+					<img src="images/skyrim/unassuming-docks.png" alt="Unassuming Docks">
+					<img src="images/skyrim/riverwood.png" alt="Riverwood">
+				</div>
 			<div class="hr"></div>
 		</div>
 	</section>
@@ -65,12 +67,29 @@
 			(647) 995-5178</p>
 			<div class="hr-footer"></div>
 			<div class="logos">
-				<div class="logo-container"><a href="https://www.facebook.com/james.jiang.75" target="_blank"><img src="images/footer-logos/facebook-logo.png" id="facebook-logo"></a></div>
-				<div class="logo-container"><a href="https://github.com/jamesjiang52" target="_blank"><img src="images/footer-logos/github-logo.png" id="github-logo"></a></div>
-				<div class="logo-container"><a href="https://www.linkedin.com/in/james-jiang-09755699/" target="_blank"><img src="images/footer-logos/linkedin-logo.png" id="linkedin-logo"></a></div>
+				<div class="logo-container">
+					<a href="https://www.facebook.com/james.jiang.75" target="_blank">
+						<img src="images/footer-logos/facebook-logo-hover.png" class="facebook-logo">
+						<img src="images/footer-logos/facebook-logo.png" class="top facebook-logo">
+					</a>
+				</div>
+				<div class="logo-container">
+					<a href="https://github.com/jamesjiang52" target="_blank">
+						<img src="images/footer-logos/github-logo-hover.png" class="github-logo">
+						<img src="images/footer-logos/github-logo.png" class="top github-logo">
+					</a>
+				</div>
+				<div class="logo-container">
+					<a href="https://www.linkedin.com/in/james-jiang-09755699/" target="_blank">
+						<img src="images/footer-logos/linkedin-logo-hover.png" class="linkedin-logo">
+						<img src="images/footer-logos/linkedin-logo.png" class="top linkedin-logo">
+					</a>
+				</div>
 			</div>
-			<p class="small-text end-text">&copy;2018 James Jiang</>
+			<p class="small-text end-text">&copy;2018 James Jiang</p>
 		</div>
 	</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="js/unitegallery-tiles.js"></script>
 </body>
 </html>
