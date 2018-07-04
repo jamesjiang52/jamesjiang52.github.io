@@ -257,6 +257,16 @@ code {
 	width: 420px;
 }
 
+.embed-pdf-landscape {
+	border: none;
+	float: right;
+	margin-top: 64px;
+	margin-left: 30px;
+	margin-bottom: 20px;
+	height: 280px;
+	width: 470px;
+}
+
 body::-webkit-scrollbar {
     width: 12px;
 }
@@ -273,6 +283,6 @@ body::-webkit-scrollbar-thumb:hover {
     background: #555; 
 }
 
-#gallery-photography {
+#gallery-artwork {
 	padding-top: 15px;
 }
