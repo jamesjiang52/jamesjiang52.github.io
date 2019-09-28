@@ -16,8 +16,6 @@
 				<nav class="navbar main-nav">
 					<ul class="nav navbar-nav">
 						<li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-						<li class="nav-item"><a href="research.html" class="nav-link">Research</a></li>
-						<li class="nav-item"><a href="artwork.html" class="nav-link">Artwork</a></li>
 						<li class="nav-item active"><a href="projects.html" class="nav-link">Projects</a></li>
 					</ul>
 				</nav>
@@ -31,6 +29,7 @@
 				<p>This page will likely be the most updated part of this website. Here, I'll post and talk a bit about some of the coding projects I've done, but I won't go in depth. As always, all the code I refer to 
 				can be found on <a href="https://github.com/jamesjiang52" target="_blank">my GitHub</a>.</p>
 			<div class="hr"></div>
+            <!--
 			<h3 class="purple-text title">Project Euler</h3>
 				<p>Code available <a href="https://github.com/jamesjiang52/Project-Euler" target="_blank">here</a>.</p>
 				<p>I began this project in the summer of 2017, and it was my first introduction to the wonderful world of Python programming. There's an online web archive, <a href="https://projecteuler.net/archives" target="_blank">
@@ -165,68 +164,43 @@ Press ENTER to initiate.
 				introduction, I mentioned I had to read actual mathematics papers in order to develop an adequate algorithm. Once I gain that background, the implementation is fairly standard, and I daresay that the problem gets
 				<em>significantly</em> easier as well.</p>
 			<div class="hr"></div>
-			<h3 class="purple-text title">Synacor Challenge</h3>
-				<p>Code available <a href="https://github.com/jamesjiang52/Synacor-Challenge" target="_blank">here</a>.</p>
-				<p>Admittedly, the Synacor Challenge was much less of a personal side project and more of an elaborate programming puzzle that consumed my life for one or two weeks. The architect of the challenge, Eric Wastl, is
-				also the creator of Advent of Code, an annual online event consisting of coding puzzles leading up to Christmas Day. After this event in 2017, I still had the urge to solve more programming puzzles, and so I
-				turned to solving this challenge.</p>
-				<p>The premise of the puzzle was quite simple, or so I thought. I was given a text file containing architectural specifications, and I needed to write a virtual machine that adhered to those specifications and 
-				which was capable of running the provided binary file <code>challenge.bin</code>. To summarize, I needed to implement three storage regions: memory with a 15-bit address space, eight registers, and an unbounded
-				stack. There were a total of 22 assembly-esque operations that could be executed, ranging from making comparisons between two numbers, to reading and writing memory, to halting the program. Throughout the
-				challenge, there would be <q>codes</q> available that would track your progress. There were eight codes in total, so that was my first hint that this challenge would be more extensive that I had thought.</p>
-				<p>Once I had gone over all the operations, it was a simple matter to implement them. I created a class, <code>Instruction()</code>, that contained a number of functions, each corresponding to an operation.
-				For example, the operation <code>call</code> has opcode <code>17</code> and takes one argument <code>a</code>. It is called as follows:</p>
-				<div class="code">
-					<p>17 a</p>
-				</div>
-				<p>When it is executed, it writes the address of the next instruction to the stack and jumps to the memory location represented by <code>a</code>. As a class function, it is simply</p>
-				<div class="code">
-					<p><span class="syntax-blue">def</span> call_(<span class="syntax-brown syntax-italic">self</span>):<br>
-						&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-brown syntax-italic">self</span>.stack.append(<span class="syntax-brown syntax-italic">self</span>.memory_address + <span class="syntax-red">2</span>)<br>
-						&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-brown syntax-italic">self</span>.memory_address = <span class="syntax-brown syntax-italic">self</span>.register_value(<span class="syntax-brown syntax-italic">self</span>.memory[<span class="syntax-brown syntax-italic">self</span>.memory_address + <span class="syntax-red">1</span>])</p>
-				</div>
-				<p>where <code>stack</code>, <code>memory_address</code> and <code>registers</code> are class variables defined in <code>__init__()</code> and <code>register_value()</code> is a class function defined as</p>
-				<div class="code">
-					<p><span class="syntax-blue">def</span> register_value(<span class="syntax-brown syntax-italic">self</span>, n):<br>
-						&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-blue">if</span> n i<span class="syntax-blue">n</span> <span class="syntax-purple">range</span>(<span class="syntax-red">32768</span>):<br>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-blue">return</span>(n)<br>
-						&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-blue">else</span>:<br>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-blue">return</span>(<span class="syntax-brown syntax-italic">self</span>.registers[n])</p>
-				</div>
-				<p>To be able to read instructions from the binary file, </p>
-			<div class="hr"></div>
-			<h3 class="purple-text title">Unbound</h3>
-				<p>Code available <a href="https://github.com/jamesjiang52/Unbound" target="_blank">here</a>.</p>
-				<div class="code"><span class="syntax-blue">public</span> <span class="syntax-purple">void</span> LoseHealth (<span class="syntax-purple">float</span> amount) {
-					damaged = <span class="syntax-blue">true</span>;
-					<span class="syntax-blue">if</span> (playerAttack.isBlocking)
-						amount *= (<span class="syntax-orange">1f</span>/playerAttack.blockReduceDamage);
-					<span class="syntax-blue">if</span> (currentHealth - amount > <span class="syntax-orange">0f</span>)
-						currentHealth -= amount;
-					<span class="syntax-blue">else</span> {
-						currentHealth = <span class="syntax-orange">0f</span>;
-						Death ();
-					}
-					healthBar.<span class="syntax-blue">value</span> = currentHealth;
-					healthRegenTimer = <span class="syntax-orange">0f</span>;
-					playerMovement.adjustedSprintSpeed = playerMovement.movementSpeed;
-				}</div>
-				<p>Content coming soon!</p>
-			<div class="hr"></div>
-			<h3 class="purple-text title">Chord For Me</h3>
-				<p>Code available <a href="https://github.com/eddddddy/ChordForMe" target="_blank">here</a>.</p>
-				<div class="code">sample_rate, samples = wavfile.read(<span class="syntax-green">"chordrecordings\\"</span> + directory + file)
-				frequencies, times, spectrogram = signal.spectrogram(samples, sample_rate, nperseg=<span class="syntax-red">2048</span>)
-				plt.pcolormesh(times, frequencies, spectrogram)
-				<span class="syntax-blue">for</span> i <span class="syntax-blue">in</span> <span class="syntax-purple">range</span>(<span class="syntax-red">16</span>):
-					plt.axis([<span class="syntax-red">0</span>.<span class="syntax-red">064</span>/<span class="syntax-red">3</span> + i*<span class="syntax-red">0</span>.<span class="syntax-red">112</span>/<span class="syntax-red">3</span>, <span class="syntax-red">0</span>.<span class="syntax-red">064</span>/<span class="syntax-red">3</span> + (i + <span class="syntax-red">1</span>)*<span class="syntax-red">0</span>.<span class="syntax-red">112</span>/<span class="syntax-red">3</span>, <span class="syntax-red">0</span>, <span class="syntax-red">5000</span>])
-					plt.axis(<span class="syntax-green">"off"</span>)
-					ax = plt.gca()
-					ax.get_xaxis().set_visible(<span class="syntax-purple">False</span>)
-					ax.get_yaxis().set_visible(<span class="syntax-purple">False</span>)
-					plt.savefig(<span class="syntax-green">"images\\"</span> + file[:-<span class="syntax-red">4</span>] + <span class="syntax-green">"_"</span> + <span class="syntax-purple">str</span>(i) + <span class="syntax-green">".png"</span>, bbox_inches=<span class="syntax-green">"tight"</span>, pad_inches=<span class="syntax-red">0</span>)
-				</div>
-				<p>Content coming soon!</p>
+            -->
+			<h3 class="purple-text title">Bitwise</h3>
+                <p>Source code available <a href="https://github.com/jamesjiang52/Bitwise" target="_blank">here</a>. Documentation available <a href="https://bitwise.readthedocs.io/en/latest/" target="_blank">here</a>.</p>
+                <p>Bitwise was my first ever Python project that I intended to release and be used by other people, and so is technically my first true open source project.</p>
+                <div class="problem-statement">
+                    <p>Bitwise is a Python library intended to make hardware design and simulation more accessible for software engineers. While it can never replace a true hardware description language, 
+                    it aims to serve as a useful tool in the hardware design process, allowing a user to build and test their digital circuits in a high-level programming language (i.e. with simpler syntax 
+                    and more flexible semantics) before implementing them using an HDL.</p>
+                </div>
+                <p>I started Bitwise in the Fall of 2018, when I was in second year at the University of Toronto. One of the courses I was taking was Digital Systems, which was an introductory course on
+                computer hardware - logic gates, registers, combinational and sequential circuits, and so on. Since I had exposure to such things already, I decided to challenge myself by starting this project. Initially, 
+                my goal wasn't to create a Python library; instead, I was inspired by the <a href="http://www.megaprocessor.com/" target="_blank">megaprocessor</a> to create a microprocessor from scratch. Along the way, 
+                I decided that releasing a Python package to encourage others to do the same would likely be a better path to follow.</p>
+                <h4 class="purple-text title">Example</h4>
+                    <p>The following code creates a half-adder.</p>
+                    <div class="code">
+                        <span class="syntax-green">"""</span><br>
+                        <span class="syntax-green">Create a half-adder.</span><br>
+                        <span class="syntax-green">"""</span><br><br>
+                        <span class="syntax-blue">import</span> bitwise <span class="syntax-blue">as</span> bw<br><br>
+
+                        <span class="syntax-blue">def</span> main():<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-green"># initialize inputs</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;a = bw.wire.Wire()<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;b = bw.wire.Wire()<br><br>
+
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-green"># initialize outputs</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;sum_ = bw.wire.Wire()<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;carry_out = bw.wire.Wire()<br><br>
+
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-green"># create circuit</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;bw.gate.XORGate2(a, b, sum_)&nbsp;&nbsp;<span class="syntax-green"># XORs a and b and puts the result into sum_</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;bw.gate.ANDGate2(a, b, carry_out)&nbsp;&nbsp;<span class="syntax-green"># ANDs a and b and puts the result into carry_out</span><br><br>
+
+                        <span class="syntax-blue">if</span> <span class="syntax-brown">__name__</span> == <span class="syntax-green">"__main__"</span>:<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;main()<br><br>
+                    </div>
 			<div class="hr"></div>
 		</div>
 	</section>
